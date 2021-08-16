@@ -35,6 +35,9 @@ $commandLine = 'git clone -- https://' . $config->getAccessToken() . '@' . $host
 exec_with_note($commandLine);
 
 
+note("forked action!");
+
+
 note('Cleaning destination repository of old files');
 // We're only interested in the .git directory, move it to $TARGET_DIR and use it from now on
 mkdir($buildDirectory . '/.git', 0777, true);
