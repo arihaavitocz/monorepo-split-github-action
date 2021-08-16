@@ -94,6 +94,10 @@ if ($changedFiles) {
 
     $message = sprintf('Pushing git commit with "%s" message to "%s"', $commitMessage, $config->getBranch());
     note($message);
+    
+    
+    exec_with_output_print('echo $(git branch)');
+    exec_with_output_print('git remote -v');
 
     exec("git commit --message '$commitMessage'");
     exec('git push --quiet origin ' . $config->getBranch());
