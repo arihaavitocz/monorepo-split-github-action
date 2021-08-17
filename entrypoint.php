@@ -99,6 +99,11 @@ if ($changedFiles) {
     note($message);
     
     
+    note("git status:");
+    exec_with_output_print('git status');
+    
+    
+    
     
     note('branch:');
     exec_with_output_print('echo $(git branch)');
