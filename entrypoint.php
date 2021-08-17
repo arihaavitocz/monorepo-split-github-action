@@ -35,9 +35,6 @@ $commandLine = 'git clone -- https://' . $config->getAccessToken() . '@' . $host
 exec_with_note($commandLine);
 
 
-note("forked action!");
-
-
 note('Cleaning destination repository of old files');
 // We're only interested in the .git directory, move it to $TARGET_DIR and use it from now on
 mkdir($buildDirectory . '/.git', 0777, true);
@@ -78,7 +75,6 @@ $restoreChdirMessage = sprintf('Changing directory from "%s" to "%s"', $formerWo
 note($restoreChdirMessage);
 
 
-
 // avoids doing the git commit failing if there are no changes to be commit, see https://stackoverflow.com/a/8123841/1348344
 exec_with_output_print('git status');
 
@@ -87,9 +83,6 @@ exec_with_output_print('git status');
 exec('git status --porcelain', $changedFiles);
 
 // $changedFiles is an array that contains the list of modified files, and is empty if there are no changes.
-
-note("test  -  1");
-
 
 if ($changedFiles) {
     note('Adding git commit');
@@ -102,12 +95,7 @@ if ($changedFiles) {
     note("git status:");
     exec_with_output_print('git status');
     
-    
-    
-    
-    note('branch:');
-    exec_with_output_print('echo $(git branch)');
-    
+         
     note('git remote:');    
     exec_with_output_print('git remote -v');
     
@@ -115,9 +103,9 @@ if ($changedFiles) {
     note('git commit:');    
     exec("git commit --message '$commitMessage'");
     
-    
-    note('git checkout -b refactoring:'); 
-    exec_with_output_print('git checkout -b refactoring');
+   
+    note('git checkout -b ' . $config->getBranch()); 
+    exec_with_output_print('git checkout -b ' . $config->getBranch());
     
     
     note('git push:');    
