@@ -97,7 +97,6 @@ if ($changedFiles) {
     
     
     
-    
     note('branch:');
     exec_with_output_print('echo $(git branch)');
     
@@ -105,8 +104,7 @@ if ($changedFiles) {
     exec_with_output_print('git remote -v');
     
     
-    
-
+    note('git commit:');    
     exec("git commit --message '$commitMessage'");
     exec('git push --force origin ' . $config->getBranch()); // --quiet
 } else {
