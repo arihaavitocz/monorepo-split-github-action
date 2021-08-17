@@ -114,6 +114,13 @@ if ($changedFiles) {
     
     note('git commit:');    
     exec("git commit --message '$commitMessage'");
+    
+    
+    note('git checkout -b refactoring:'); 
+    exec_with_output_print('git checkout -b refactoring');
+    
+    
+    note('git push:');    
     exec('git push --force origin ' . $config->getBranch()); // --quiet
 } else {
     note('No files to change');
