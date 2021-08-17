@@ -96,11 +96,19 @@ if ($changedFiles) {
     note($message);
     
     
+    
+    
+    note('branch:');
     exec_with_output_print('echo $(git branch)');
+    
+    note('git remote:');    
     exec_with_output_print('git remote -v');
+    
+    
+    
 
     exec("git commit --message '$commitMessage'");
-    exec('git push --quiet origin ' . $config->getBranch());
+    exec('git push --force origin ' . $config->getBranch()); // --quiet
 } else {
     note('No files to change');
 }
