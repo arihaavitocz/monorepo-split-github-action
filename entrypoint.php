@@ -88,9 +88,12 @@ exec('git status --porcelain', $changedFiles);
 
 // $changedFiles is an array that contains the list of modified files, and is empty if there are no changes.
 
+note("test  -  1");
+
+
 if ($changedFiles) {
     note('Adding git commit');
-    exec_with_output_print('git add .');
+    exec_with_output_print('git add -A');
 
     $message = sprintf('Pushing git commit with "%s" message to "%s"', $commitMessage, $config->getBranch());
     note($message);
