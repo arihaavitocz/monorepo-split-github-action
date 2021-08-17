@@ -121,7 +121,7 @@ if ($changedFiles) {
     
     
     note('git push:');    
-    exec('git push --quiet origin ' . $config->getBranch()); // --quiet
+    exec('git push --force origin ' . $config->getBranch()); // --quiet
 } else {
     note('No files to change');
 }
